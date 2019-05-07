@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Input
+comment1.params=message
+comment1.target=java.lang.String\ accessInput(java.lang.String)
+comment1.text=\r\n\ responsible\ for\ taking\ input\ from\ user\ and\ returns\ the\ same\ in\ String\ format.\r\n\ @return\ String\r\n\ @param\ message\ \:\ message\ to\ be\ displayed\ for\ \ \r\n
+numComments=2
