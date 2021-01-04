@@ -1,0 +1,496 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.*;
+
+/**
+ * Write a description of class Controller here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class MonashEats
+{
+    Restaurant res[];
+    RestaurantOwner resOwner[];
+    Cart cart = new Cart();
+    Customer cust;
+    Input inp; 
+    HomePage UI;
+    public MonashEats()
+    {
+        cust = new Customer();
+        res = new Restaurant[3];
+        res[0] = new Restaurant("3145","Derby Thai","Thai Restaurant","Caulfield East","4244839","Sumit");
+        res[1] = new Restaurant("3145","Quality bakers"," bakery","Glen Huntly","323232323","Rohan");
+        res[2] = new Restaurant("3183","Lava"," Bala clava"," St. Kilda"," 3232323","Shrey");
+        
+        resOwner = new RestaurantOwner[3];
+        resOwner[0] = new RestaurantOwner("Sumit","32232","fav pet","parrot","sgar0010@gmail.com","Sumit");
+        resOwner[1] = new RestaurantOwner("Shrey","32323","fav pet","parrot","scha0010@gmail.com","Shrey");
+        resOwner[2] = new RestaurantOwner("Rohan","32323","fav pet","parrot","rsin0010@gmail.com","Rohan");
+
+        orderRating = new ArrayList<Rating>();
+        RO = new RestaurantOwnerController();
+        RO.readRestaurantFile();
+    }
+
+    
+    public Restaurant[] getRestaurant()
+    {
+        return res;
+    }
+    
+    public RestaurantOwner[] getRestaurantOwner()
+    {
+        return resOwner;
+    }
+    public Customer getCustomer()
+    {
+        return cust;
+    }
+
+    public void setCustomer(String name1,String phoneNumber1,String email1,String password1)
+    {
+        cust = new Customer(name1,phoneNumber1,email1,password1);
+    }
+
+    public void registerCustomer(String name,String phoneNumber,String email,String password)
+    {
+        Input inp = new Input();
+        FileIo file = new FileIo();
+        boolean isFound = false;
+
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("customer.txt")); 
+            while (!isFound) {
+                String line = reader.readLine();
+                //System.out.println("Line is  "+line);
+                if (line == null)     {
+                    isFound = true;
+                    break;
+                }
+                Scanner scan = new Scanner(line);
+                scan.useDelimiter("\n");
+
+                String userDetails = scan.next();
+
+                Scanner scan1 = new Scanner(userDetails);
+                scan1.useDelimiter(",");
+                String nameRegistered = scan1.next();
+                String phoneNumberRegistered = scan1.next();
+                String emailRegistered = scan1.next();
+                if( emailRegistered.equals(email))
+                {
+
+                //    file.usingBufferedWritter(name+","+phoneNumber+","+email+","+password+"\n", "customer.txt");
+                //    System.out.println("Congratulations, you are now registered to order for Monash Eats");
+                    isFound = false;
+                    break;
+                   
+               
+            }
+        }
+        
+        if (isFound)
+          {
+               file.usingBufferedWritter(name+","+phoneNumber+","+email+","+password+"\n", "customer.txt");
+               System.out.println("Congratulations, you are now registered to order for Monash Eats");
+          }
+          else
+           {
+                System.out.println("This email is already registered. Please use another email");
+                    UI.homepageCustomer();
+            }
+    }
+        catch(Exception e)
+        { System.out.println("Error");
+        }
+          
+        
+    }
+
+    public void registerRestaurantOwner()
+    {
+        Input inp = new Input();
+        String name = inp.accessInput("Enter Name:");
+        String phoneNumber = inp.accessInput("Enter Phone Number:");
+        String email = inp.accessInput("Enter Email address");
+        String ques = inp.accessInput("Enter Security Question");
+        String ans = inp.accessInput("Enter Security Answer");
+        String password = inp.accessInput("Enter Password:");
+        String confirmPassword = inp.accessInput("Confirm Password:");
+
+        //RestaurantOwner ow    ner  = new RestaurantOwner(name,phoneNumber,ques,ans,password,email);
+        FileIo file = new FileIo();
+        try{
+            file.usingBufferedWritter(name+","+phoneNumber+","+ques+","+ans+","+password+","+email+"\n", "owner.txt");
+            System.out.println("You are successfully registered as restaurant owner.Account has been forwarded to Administrator for approval");
+        }
+        catch(Exception e)
+        { System.out.println("error");  
+        }
+    }
+
+    public Validation getValidation()
+    {
+        Validation valid = new Validation();
+        return valid;
+    }
+
+  
+
+    public void login(String userName, String enteredPassword)
+    {
+        if(!(cust.getName()).equals(""))
+        {
+            System.out.println("You are already logged in");
+        }
+        else
+        {
+            //Input inp = new Input();
+            //String userName = inp.accessInput("Enter email:");
+            //String enteredPassword = inp.accessInput("Enter your password:");
+            boolean isFound = false;
+            try
+            {
+                BufferedReader reader = new BufferedReader(new FileReader("customer.txt")); 
+
+                while (!isFound) {
+                    String line = reader.readLine();
+                    //System.out.println("Line is  "+line);
+                    if (line == null)     {
+                        isFound = false;
+                        //System.out.println("a nothing found");
+                        break;
+                    }
+                    Scanner scan = new Scanner(line);
+                    scan.useDelimiter("\n");
+
+                    String userDetails = scan.next();
+
+                    Scanner scan1 = new Scanner(userDetails);
+                    scan1.useDelimiter(",");
+                    String name = scan1.next();
+                    String phoneNumber = scan1.next();
+                    String email = scan1.next();
+                    String password = scan1.next();
+
+                    if(enteredPassword.equals(password) && userName.equals(email))
+                    {
+                        System.out.println("Successfully Logged In");
+                        System.out.println("Welcome "+name+" to Monash Eats"); 
+                        cust = new Customer(name,phoneNumber,email,password);
+                        System.out.println();
+                        isFound = true; 
+                        //placeOrder();//System.out.println("checking username and password");
+                        break;
+                    }
+
+                }
+
+                if(isFound==false)
+                {
+                    System.out.println("Invalid email or password");
+                    int choice = 0;
+                    do{
+                        boolean errorCheck = false;
+                        do{
+                            try{
+                                System.out.println("Press 1 for relogin");
+                                System.out.println("Press 2 for homepage");
+                                choice = Integer.parseInt(inp.accessInput("please enter:"));
+                                errorCheck = false;
+                            }
+                            catch(NumberFormatException ex)
+                            {
+                                System.out.println("Invalid choice, Please enter from 1 or 2");
+                                errorCheck = true;
+                            }
+                        }while(errorCheck);
+
+                        switch(choice)
+                        {
+                            case 1: 
+                            UI.displayLogin();
+                            break;
+
+                            case 2:
+                            UI.homepageCustomer();
+                            break;
+
+                            default:
+                            System.out.println("Invalid choice, Please enter from 1 or 2");                    
+                            choice = 3;
+                        }
+                    }while( choice == 3 ); 
+                }
+            }
+
+            catch(Exception ex){
+                System.out.println(ex);
+            }
+        }
+    }
+
+    /*public void searchRestaurants()
+    {
+    // search restaurants  
+
+    Restaurant res = new Restaurant();
+
+    Input inp = new Input();
+    String searchSuburbCode = inp.accessInput("Enter your suburb code");
+    //res.viewRestaurant(searchSuburbCode);
+    }
+
+    /*public void addRestaurant()
+    {
+    Input inp = new Input();
+    String name = inp.accessInput("Enter Name:");
+    String phoneNumber = inp.accessInput("Enter Phone Number:");
+    String address = inp.accessInput("Enter address");
+    String suburbCode = inp.accessInput("Enter Suburb Code");
+    String description = inp.accessInput("Enter description:");
+
+    Restaurant res  = new Restaurant(suburbCode,name,description,address,phoneNumber);
+    FileIo file = new FileIo();
+    try{
+    file.usingBufferedWritter(res.suburbCode+","+res.name+","+res.description+","+res.address+","+res.phoneNumber+"\n", "Restaurants.txt");
+    }
+    catch(Exception e)
+    { System.out.println("error");  
+    }
+    }
+     */
+    public void placeOrder()
+    {
+        Input inp = new Input();
+        int resNumber = 1;
+        int[] storeIndex = new int[3];
+        int a = 0;
+        String searchSuburbCode = " ";
+        boolean errorCheckSuburbCode = false;
+        searchSuburbCode = inp.accessInput("Enter your suburb code");
+
+        for(int i=0;i<3;i++)
+        {
+
+            if(searchSuburbCode.equals(res[i].getSuburbCode()))
+            {
+                System.out.println(resNumber+". Restaurant Name:"+res[i].getRestaurantName());
+                storeIndex[a] = i;
+                a++;
+                resNumber++;
+            }
+
+        }
+
+        int resChoice = Integer.parseInt(inp.accessInput("Press Restaurant Number to select:"));
+        // this is index of your restaurant in res[] -->storeIndex[resChoice-1]
+        int selResNum = storeIndex[resChoice-1];
+        Restaurant res1 = new Restaurant(res[selResNum].getSuburbCode(),res[selResNum].getRestaurantName(),
+                res[selResNum].getRestaurantDesc(),res[selResNum].getRestaurantAddress(),
+                res[selResNum].getRestaurantPhone(),res[selResNum].getRestaurantOwner());
+        // we can use now res[selResNum] for selected restaurant//
+        System.out.println("Welcome to Restaurant "+res1.getRestaurantName());
+        int choice =0;
+        do{
+            boolean errorCheck = false;
+            choice = 0;
+            do{
+                try{
+                    System.out.println("1. View Restaurant Menu");
+                    System.out.println("2. View Restaurant Information");
+                    choice = Integer.parseInt(inp.accessInput("Press Option Number to choose:"));
+                    errorCheck = false;
+                }
+                catch(NumberFormatException ex)
+                {
+                    System.out.println("-----------------------------------------");
+                    System.out.println("You have entered invalid input, Please enter 1 or 2");
+                    System.out.println("-----------------------------------------");
+                    errorCheck = true;
+                }
+            }while(errorCheck);
+
+            switch(choice)
+            {
+                case 1:
+                {
+
+                    res[selResNum].getMenu().displayMenu();
+                    break;
+                }
+
+                case 2:
+                {
+                    res1.displayRestaurantInfo();
+                    System.out.println("Press enter to continue");      // do validation
+                    try{
+                        System.in.read();
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Wrong");
+                    }
+                    choice = 3;
+                    break;
+                }
+
+                default:
+                {
+                    System.out.println("-----------------------------------------");
+                    System.out.println("Invalid choice, Please enter from 1 or 2");   
+                    System.out.println("-----------------------------------------");
+                    choice = 3;
+                }
+
+            }
+        }while(choice == 3);
+        int choice1 = Integer.parseInt(inp.accessInput("Press Option Number to choose Menu:"));     // asks for menu category
+        String selCat = res[selResNum].getMenu().getCategory(choice1-1);                            // saves menucatgory selected
+        System.out.println("You selected "+selCat); 
+        // view items based on selection                                           
+        int choice2 = 0; // to choose if add more items or view cart
+        //int selectedItem = viewItems(selCat,res[selResNum].getRestaurantName(),selResNum);
+        do{
+            choice2 = 0;
+            int selectedItem = viewItems(selCat,res[selResNum].getRestaurantName(),selResNum);
+            int selectedItemQty = Integer.parseInt(inp.accessInput("Please enter qty of item"));
+            cart.addToCart(res[selResNum].getRestaurantName(),res[selResNum].getMenu().getItems()[selectedItem].getItemName()
+            ,selectedItemQty,res[selResNum].getMenu().getItems()[selectedItem].getItemPrice(),cust);
+            cart.viewCart(cust,res[selResNum].getRestaurantName());
+            //addItemToCart(selectedItem,selResNum,selCat);
+            System.out.println("Press 1 to add more items");
+            System.out.println("Press 2 to View Cart");
+            choice2 = Integer.parseInt(inp.accessInput("Press option Number:"));
+            switch(choice2)
+            {
+                case 1:
+                break;
+
+                case 2:
+                {
+                    cart.viewCart(cust,res[selResNum].getRestaurantName());
+                    try{
+                        System.out.println("Press enter key to continue");
+                        System.in.read();
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Wrong");
+                    }
+                    System.out.println("Press 1 to add more items");
+                    System.out.println("Press 2 to checkout");
+                    int choiceHere = Integer.parseInt(inp.accessInput("Press option Number:"));
+                    if( choiceHere == 1)
+                        choice = 1;
+                    else 
+                        choice = 3;
+                    break;
+                }
+
+                default:
+                {
+                    System.out.println("-----------------------------------------");
+                    System.out.println("Invalid choice, Please enter from 1 or 2");   
+                    System.out.println("-----------------------------------------");
+                    choice = 1;
+                    break;
+                }
+
+            }
+            //choice2 = Integer.parseInt(inp.accessInput("Press Option Number:"));
+        }while(choice == 1);
+
+        // checkout code ----
+        String checkoutStatus="";
+        do{
+            checkoutStatus = cart.checkout(cust);
+            if (checkoutStatus.equals("NL"))
+            {
+                System.out.println("You are not logged in. Please login:");
+                //UI.displayLogin();
+                try{
+                    System.in.read();
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Wrong");
+                }
+
+            }
+        }while(checkoutStatus.equals("NL"));
+
+        System.out.println("Press 1 to finalize order");
+        System.out.println("Press 2 to cancel and go to homepage");
+        int choice4 = Integer.parseInt(inp.accessInput("Please choose option"));
+        switch(choice4)
+        {
+            case 1:
+            System.out.println("Congratulations !! Your order has been placed and sent to restaurant owner for approval");
+            break;
+
+            case 2:
+            System.out.println("You cancelled the order");
+            UI.homepageCustomer();
+            break;
+        }
+    }
+
+    /* public void viewItems(String menuCat,String resName, int selResNum)
+    { 
+    //res[selResNum].getMenu().getItems
+    // res1 = new Restaurant1();
+    int itemNumber = 1;
+    /* for ( Items item1 :  res[selResNum].getMenu().getItems())
+    {
+    //if (((res[selResNum].getMenu().getItems()[0].getResName()).equals(resName)) && 
+    // ((res[selResNum].getMenu().getItems()[0].getItemCat()).equals(menuCat)))
+    if (((res[selResNum].getMenu().getItems()[i].getResName()).equals(resName)) && 
+    ((res[selResNum].getMenu().getItems()[i].getItemCat()).equals(menuCat)))
+    {//for( Restaurant rest  : res)
+    {
+
+    // if((rest.getRestaurantName()).equals(resName) && menuCat.equals("a"))
+    {
+    System.out.println(itemNumber+" "+res[selResNum].getMenu().getItems()[i].getItemName()+" "+res[selResNum].getMenu().getItems()[i].getItemDesc()+" "+res[selResNum].getMenu().getItems()[i].getItemPrice());
+    itemNumber++;
+
+    }
+    }
+    }}
+    }
+     */
+    public int viewItems(String menuCat,String resName,int selResNum)
+    { 
+        Input inp = new Input();
+        ArrayList<Integer> itemInRes = new ArrayList<Integer>();
+        int itemNumber = 1;
+        for ( int i = 0;i<(res[selResNum].getMenu().getItems().length);i++)
+        {
+            if (((res[selResNum].getMenu().getItems()[i].getResName()).equals(resName)) && 
+            ((res[selResNum].getMenu().getItems()[i].getItemCat()).equals(menuCat)))
+            {
+                {
+                    System.out.println(itemNumber+" "+res[selResNum].getMenu().getItems()[i].getItemName()+" "+res[selResNum].getMenu().getItems()[i].getItemDesc()+" "+res[selResNum].getMenu().getItems()[i].getItemPrice());
+                    itemNumber++;
+                    itemInRes.add(i);
+                }
+            }}
+        int addItemNumber = Integer.parseInt(inp.accessInput("Please select item number to add to cart:"));
+        int index = addItemNumber - 1;
+        return (itemInRes.get(index));
+    }
+
+    public void logout()
+    {
+        cust = new Customer();
+    }
+
+    
+    
+
+    
+
+}

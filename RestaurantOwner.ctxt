@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=RestaurantOwner
+comment0.text=\r\n\ Restaurant\ owner\ user\ detail\ is\ stored\ in\ this\ clas.\r\n\ It\ is\ inherited\ from\ User\ class\r\n\ @author\ (FIT5136_S19_Team31)\r\n\ @version\ (v10.4)\r\n
+comment1.params=
+comment1.target=RestaurantOwner()
+comment1.text=\r\n\ Constructor\ of\ RestaurantOwner\ user\r\n\ Initialises\ the\ variables\ for\ object\ of\ RestaurantOwner\ to\ null\ \r\n\ \r\n
+comment2.params=email1\ password1\ name1\ phoneNumber1\ ques\ ans
+comment2.target=RestaurantOwner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Parametrized\ Constructor\ of\ Class\ Restaurant\ Owner\r\n\ Initialises\ the\ variables\ for\ object\ of\ Restaurant\ Owner\ to\ Paramters\ \r\n\ @param\ email1\ -\ email\ address\ of\ a\ Restaurant\ Owner\r\n\ @param\ password1\ -\ password\ to\ login\ \r\n\ @param\ name1\ -\ name\ of\ Restaurant\ Owner\r\n\ @param\ phoneNumber1\ -\ Contact\ number\ of\ Restaurant\ Owner\r\n\ @param\ address1\ -\ delivery\ address\ of\ Restaurant\ Owner\r\n\ @param\ suburbCode1\ -\ suburb\ Code\ of\ delivery\ address\ of\ Restaurant\ Owner\r\n\ @param\ secQues\ -\ security\ question\ selected\ by\ customer\ to\ reset\ password\r\n\ @param\ secAns\ -\ answer\ to\ security\ question\ to\ reset\ password\r\n
+comment3.params=
+comment3.target=void\ displayRestaurantOwner()
+comment3.text=\r\n\ displayRestaurantOwner()\ to\ display\ a\ restaurant\ owner\ in\ action\r\n
+numComments=4

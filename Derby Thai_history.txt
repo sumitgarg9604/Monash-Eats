@@ -1,0 +1,7 @@
+04-01-2021 16:58:46  Restaurant Name: Derby Thai
+Customer Name:Sumit
+Phone Number3223
+1 Green curry 1 2.5
+ Total : 2.5
+Payment Method :Cash
+--------------------------------------------------------------------------

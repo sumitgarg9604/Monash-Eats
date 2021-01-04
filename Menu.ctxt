@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Menu
+comment0.text=\r\n\ Menu\ Class\ is\ for\ storing\ three\ thpes\ of\ menu\r\n\ Breakfast,Lunch\ and\ Dinner\r\n\ @author\ (FIT5136_S19_Team31)\r\n\ @version\ (v10.4)\r\n
+comment1.params=
+comment1.target=Menu()
+comment1.text=\r\n\ Constructor\ for\ Menu\ class\r\n\ contains\ item\ in\ the\ construction\ as\ pre-loaded\ value\r\n
+comment2.params=
+comment2.target=Items[]\ getItems()
+comment2.text=\r\n\ getItems()\ is\ used\ to\ transfer\ item\ attributes\r\n\ @return\ Items[]\ -\ arraylist\r\n
+comment3.params=
+comment3.target=void\ displayMenu()
+comment3.text=\r\n\ displayMenu()\ is\ used\ to\ print\ menu\ category\ information\r\n
+comment4.params=index
+comment4.target=java.lang.String\ getCategory(int)
+comment4.text=\r\n\ getCategory(int\ index)\ is\ used\ to\ transfer\ category\ index\r\n\ @return\ String\ -\ category\ index\r\n
+numComments=5

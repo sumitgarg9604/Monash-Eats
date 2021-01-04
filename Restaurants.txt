@@ -1,0 +1,7 @@
+3000,Autralian curry,Glen Huntly,St Kilda, 3232323,atan0010@gmail.com,0.0
+3000,Mike's Cafe,Cafe,Melbourne,55446677,Rener0012@gmail.com,0.0
+3145,Quality bakers,bakery,Glen Huntly,323232323,rsin0010@gmail.com,0.0
+3168,Twosome Story,Fastfood,Clayton,44332211,alex0001@gmail.com,0.0
+3168,Mcdonald's Clayton,Fastfood,Clayton,65431178,alex0001@gmail.com,0.0
+3145,Lava,Bala clava,St Kilda, 3232323,rsin0010@gmail.com,1.0
+3145,Derby Thai,Thai Restaurant,Caulfield East,4244839,atan0010@gmail.com,1.0

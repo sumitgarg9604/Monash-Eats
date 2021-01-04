@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Validation
+comment0.text=\r\n\ Validation\ class\ validates\ the\ inputs\ entered\ by\ user\r\n\r\n\ @author\ (FIT5136_S19_Team31)\r\n\ @version\ (v10.4)\r\n
+comment1.params=
+comment1.target=Validation()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ validation\r\n
+comment2.params=str
+comment2.target=boolean\ isNumeric(java.lang.String)
+comment2.text=\r\n\ isNumeric()\ validates\ if\ the\ input\ entered\ \ is\ numerics\ or\ characters\r\n\ @param\ str\ -\ str\ is\ being\ validated\r\n\ @return\ boolean\r\n
+comment3.params=str
+comment3.target=boolean\ checkSuburbCodeLength(java.lang.String)
+comment3.text=\r\n\ checkSuburbCodeLength()\ validates\ if\ the\ input\ entered\ confirms\ the\ length\ of\ 4\ characters\r\n\ @param\ str\ -\ str\ is\ being\ validated\r\n\ @return\ boolean\r\n
+comment4.params=str
+comment4.target=boolean\ checkCharacterIsNull(java.lang.String)
+comment4.text=\r\n\ checkCharacterIsNull()\ validates\ if\ the\ input\ entered\ is\ empty\r\n\ @param\ str\ -\ str\ is\ being\ validated\r\n\ @return\ boolean\r\n
+comment5.params=str
+comment5.target=boolean\ checkEmail(java.lang.String)
+comment5.text=\r\n\ checkEmail()\ validates\ if\ the\ input\ confimrs\ the\ format\ of\ email\r\n\ @param\ str\ -\ str\ is\ being\ validated\r\n\ @return\ boolean\r\n
+comment6.params=str
+comment6.target=boolean\ checkSpace(java.lang.String)
+comment6.text=\r\n\ checkSpace()\ validates\ if\ the\ input\ has\ any\ whitespaces\r\n\ @param\ str\ -\ str\ is\ being\ validated\r\n\ @return\ boolean\r\n
+numComments=7

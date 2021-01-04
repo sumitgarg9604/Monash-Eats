@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Customer
+comment0.text=\r\n\ Customer\ clas\ stores\ the\ details\ of\ customers.\r\n\r\n\ @author\ (FIT5136_S19_Team31)\r\n\ @version\ (v10.4)\r\n
+comment1.params=
+comment1.target=Customer()
+comment1.text=\r\n\ Constructor\ of\ Class\ customer\r\n\ Initialises\ the\ variables\ for\ object\ of\ customer\ to\ null\ \r\n\ It\ is\ inherited\ from\ User\ class\r\n
+comment2.params=email1\ password1\ name1\ phoneNumber1\ address1\ suburbCode1\ secQues\ secAns
+comment2.target=Customer(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Parametrized\ Constructor\ of\ Class\ customer\r\n\ Initialises\ the\ variables\ for\ object\ of\ customer\ to\ Paramters\ \r\n\ @param\ email1\ -\ email\ address\ of\ a\ customer\r\n\ @param\ password1\ -\ password\ to\ login\ \r\n\ @param\ name1\ -\ name\ of\ Customer\r\n\ @param\ phoneNumber1\ -\ Contact\ number\ of\ Customer\r\n\ @param\ address1\ -\ delivery\ address\ of\ Customer\r\n\ @param\ suburbCode1\ -\ suburb\ Code\ of\ delivery\ address\ of\ customer\r\n\ @param\ secQues\ -\ security\ question\ selected\ by\ customer\ to\ reset\ password\r\n\ @param\ secAns\ -\ answer\ to\ security\ question\ to\ reset\ password\r\n
+comment3.params=
+comment3.target=int\ getSuburbCode()
+comment3.text=\r\n\ getSuburbCode()\ returns\ the\ suburb\ code\ of\ user\r\n\ @return\ int\r\n
+comment4.params=
+comment4.target=java.lang.String\ getAddress()
+comment4.text=\r\n\ getAddress()\ returns\ the\ address\ of\ user\r\n\ @return\ String\r\n
+comment5.params=suburbCode1
+comment5.target=void\ setSuburbCode(int)
+comment5.text=\r\n\ setSuburbCode()\ assignes\ the\ suburb\ Code\ of\ user\r\n\ @param\ suburbCode1-\ new\ suburbCode\ being\ initialised\r\n
+comment6.params=address1
+comment6.target=void\ setAddress(java.lang.String)
+comment6.text=\r\n\ setAddress()\ assignes\ the\ address\ of\ user\r\n\ @param\ address1-\ new\ address1\ being\ initialised\r\n
+numComments=7
