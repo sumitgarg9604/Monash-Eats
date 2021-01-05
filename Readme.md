@@ -18,6 +18,9 @@ Restaurant Owner has to accept or reject the customer's order
 
 Administrator has the privilege to delete a restaurant.
 
+## Tech Used
+Java
+
 ## Class Diagram: 
 https://drive.google.com/file/d/1Q_28FIx5SIwiv0pzSRFGwxA9CPrEke61/view?usp=sharing
 
